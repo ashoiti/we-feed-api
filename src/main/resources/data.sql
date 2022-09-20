@@ -1,0 +1,1 @@
+INSERT INTO tb_user (name, telephone, email, password, cpf) values ('User Teste', '1','aa@aa.com','$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6','11111111111'); 

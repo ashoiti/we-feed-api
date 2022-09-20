@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name ="user")
+@Table(name ="tb_user")
 public class User {
 
     @Id
@@ -19,5 +19,7 @@ public class User {
     private String name;
     private String telephone;
     private String email;
+    private String password;
+    private String cpf;
 
 }
