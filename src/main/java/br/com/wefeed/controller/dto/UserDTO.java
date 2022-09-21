@@ -10,5 +10,6 @@ public class UserDTO {
 	private String login;
 	private String pass;
 	private String email;
+	private String token;
 
 }

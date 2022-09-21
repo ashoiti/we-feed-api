@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import br.com.wefeed.config.JwtTokenUtil;
 import br.com.wefeed.controller.dto.UserDTO;
+import br.com.wefeed.model.User;
+import br.com.wefeed.service.UserService;
 
 @RestController
 public class AuthController {
@@ -21,16 +25,18 @@ public class AuthController {
 	private AuthenticationManager authenticationManager;
 	
 	@Autowired
-	private JwtTokenUtil jwtTokenUtil;
+	private UserService service;
 	
 	@PostMapping(value = "/auth")
 	public UserDTO login(@RequestBody UserDTO user) {
 		
 		Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPass()));
+		User userAuth = (User)authenticate.getPrincipal();
 		
-//		final String token = jwtTokenUtil.generateToken(userDetails);
+		UserDTO ret = service.getUserDTO(userAuth);
+		ret.setToken(service.getUserToken(userAuth));
 		
-		return new UserDTO();
+		return ret;
 	}
 	
 	@RequestMapping(value = "/validate", method = RequestMethod.GET)
