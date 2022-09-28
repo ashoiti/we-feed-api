@@ -2,10 +2,10 @@ name: Deployment
 on:
   push:
     branches:
-      - ci/configuracao-pipeline-aws
+      - develop
   pull_request:
     branches:
-      - ci/configuracao-pipeline-aws
+      - develop
 jobs:
   build:
     name: Build
