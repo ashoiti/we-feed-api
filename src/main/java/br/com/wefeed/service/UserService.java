@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.wefeed.config.JwtTokenUtil;
 import br.com.wefeed.controller.dto.UserDTO;
+import br.com.wefeed.controller.dto.UserProfile;
 import br.com.wefeed.model.User;
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,6 +37,7 @@ public class UserService {
 		ret.setCpf(user.getCpf());
 		ret.setEmail(user.getEmail());
 		ret.setName(user.getName());
+		ret.setProfile(UserProfile.valueOf(user.getProfile()));
 		
 		return ret;
 	}

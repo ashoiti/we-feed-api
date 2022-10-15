@@ -4,5 +4,6 @@ CREATE TABLE tb_user (
   telephone VARCHAR(200)  NOT NULL,
   email VARCHAR(200) NOT NULL,
   password VARCHAR(200) NOT NULL,
-  cpf VARCHAR(15) NOT NULL
+  cpf VARCHAR(15) NOT NULL,
+  profile VARCHAR(20) NOT NULL
 );
