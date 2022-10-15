@@ -62,6 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			            "/configuration/ui",
 			            "/configuration/security",
 			            "/swagger-ui.html",
+			            "/swagger-ui/**",
 			            "/webjars/**").permitAll().
 				// all other requests need to be authenticated
 				anyRequest().authenticated().and().
@@ -74,6 +75,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			            "/configuration/ui",
 			            "/configuration/security",
 			            "/swagger-ui.html",
+			            "/swagger-ui/**",
 			            "/webjars/**").and().
 				exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
