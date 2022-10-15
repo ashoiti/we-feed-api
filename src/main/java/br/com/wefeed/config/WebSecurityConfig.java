@@ -56,13 +56,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// We don't need CSRF for this example
 		httpSecurity.csrf().disable()
 				// dont authenticate this particular request
-				.authorizeRequests().antMatchers("/auth","/h2-console/**","/swagger-ui/**").permitAll().
+				.authorizeRequests().antMatchers("/auth","/h2-console/**","/v2/api-docs",
+			            "/swagger-resources",
+			            "/swagger-resources/**",
+			            "/configuration/ui",
+			            "/configuration/security",
+			            "/swagger-ui.html",
+			            "/webjars/**").permitAll().
 				// all other requests need to be authenticated
 				anyRequest().authenticated().and().
 				// make sure we use stateless session; session won't be used to
 				// store user's state.
 				headers().frameOptions().disable().and().
-				csrf().ignoringAntMatchers("/auth","/h2-console/**","/swagger-ui/**").and().
+				csrf().ignoringAntMatchers("/auth","/h2-console/**","/v2/api-docs",
+			            "/swagger-resources",
+			            "/swagger-resources/**",
+			            "/configuration/ui",
+			            "/configuration/security",
+			            "/swagger-ui.html",
+			            "/webjars/**").and().
 				exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 

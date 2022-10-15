@@ -1,6 +1,7 @@
 package br.com.wefeed.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,7 +29,7 @@ public class AuthController {
 	private UserService service;
 	
 	@PostMapping(value = "/auth")
-	public UserDTO login(@RequestBody UserDTO user) {
+	public ResponseEntity<UserDTO> login(@RequestBody UserDTO user) {
 		
 		Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPass()));
 		User userAuth = (User)authenticate.getPrincipal();
@@ -36,12 +37,12 @@ public class AuthController {
 		UserDTO ret = service.getUserDTO(userAuth);
 		ret.setToken(service.getUserToken(userAuth));
 		
-		return ret;
+		return ResponseEntity.ok(ret);
 	}
 	
 	@RequestMapping(value = "/validate", method = RequestMethod.GET)
-	public UserDTO validate(@RequestParam String email) {
-		return new UserDTO();
+	public ResponseEntity<String> validate(@RequestParam String email) {
+		return ResponseEntity.ok("");
 	}
 	
 	@RequestMapping(value = "/create", method = RequestMethod.PUT)

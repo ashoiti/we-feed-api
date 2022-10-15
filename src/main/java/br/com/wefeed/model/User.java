@@ -11,11 +11,14 @@ import javax.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name ="tb_user")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User implements UserDetails{
 
     private static final long serialVersionUID = 3581777540483075499L;
