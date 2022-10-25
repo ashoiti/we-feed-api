@@ -7,3 +7,10 @@ CREATE TABLE tb_user (
   cpf VARCHAR(15) NOT NULL,
   profile VARCHAR(20) NOT NULL
 );
+
+CREATE TABLE tb_category (
+  id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  description VARCHAR(500)  NOT NULL,
+  status VARCHAR(1) NOT NULL
+);

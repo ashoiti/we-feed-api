@@ -2,23 +2,26 @@ server:
   port : 5000
 
 spring:
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2-console
   datasource:
-    url: jdbc:h2:mem:mydb
-    username: sa
-    password: password
-    driverClassName: org.h2.Driver
+    url: jdbc:mysql://awseb-e-skpukzkvij-stack-awsebrdsdatabase-lqtptdxwbn4w.c92uysj6m6mz.sa-east-1.rds.amazonaws.com:3306/wefeed
+    username: wefeeddbadmin
+    password: wefeeddb
+    driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
     spring:
       jpa:
-        database-platform: org.hibernate.dialect.H2Dialect
+        database-platform: org.hibernate.dialect.MySQL5Dialect
     hibernate:
       ddl-auto: none
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  sql:
+    init:
+      mode: never
 jwt:
   secret: javainuse
