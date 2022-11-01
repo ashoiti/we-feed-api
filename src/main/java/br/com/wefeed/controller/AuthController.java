@@ -1,17 +1,22 @@
 package br.com.wefeed.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.*;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 
 import br.com.wefeed.controller.dto.UserDTO;
 import br.com.wefeed.model.User;
 import br.com.wefeed.service.UserService;
 
+@CrossOrigin
 @RestController
 public class AuthController {
 	
