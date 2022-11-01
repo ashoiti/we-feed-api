@@ -4,8 +4,9 @@ import br.com.wefeed.controller.dto.UserDTO;
 import br.com.wefeed.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.http.ResponseEntity;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.*;
 import br.com.wefeed.service.UserService;
 
