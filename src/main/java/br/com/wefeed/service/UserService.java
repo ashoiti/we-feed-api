@@ -1,5 +1,6 @@
 package br.com.wefeed.service;
 
+import br.com.wefeed.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,9 @@ public class UserService {
 	
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
+
+	@Autowired
+	private IUserRepository repository;
 	
 	public String getUserToken(User user) {
 	
@@ -42,4 +46,17 @@ public class UserService {
 		return ret;
 	}
 
+	public User saveUser (UserDTO dto) {
+
+		User dtoUser = new User();
+
+		dtoUser.setCpf(dto.getCpf());
+		dtoUser.setName(dto.getName());
+		dtoUser.setEmail(dto.getEmail());
+		dtoUser.setTelephone(dto.getTelephone());
+		dtoUser.setProfile(dto.getProfile().toString());
+		dtoUser.setPassword(dto.getPass());
+
+		return repository.save(dtoUser);
+	}
 }

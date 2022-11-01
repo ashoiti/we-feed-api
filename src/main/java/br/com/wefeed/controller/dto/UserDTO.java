@@ -11,6 +11,7 @@ public class UserDTO {
 	private String pass;
 	private String email;
 	private String token;
+	private String telephone;
 	private UserProfile profile;
 	
 }
