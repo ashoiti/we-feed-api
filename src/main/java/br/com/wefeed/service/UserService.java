@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import br.com.wefeed.config.EncoderConfig;
 import br.com.wefeed.config.JwtTokenUtil;
 import br.com.wefeed.controller.dto.UserDTO;
 import br.com.wefeed.controller.dto.UserProfile;
@@ -22,6 +23,9 @@ public class UserService {
 
 	@Autowired
 	private IUserRepository repository;
+	
+	@Autowired
+	private EncoderConfig encoder;
 	
 	public String getUserToken(User user) {
 	
@@ -55,7 +59,7 @@ public class UserService {
 		dtoUser.setEmail(dto.getEmail());
 		dtoUser.setTelephone(dto.getTelephone());
 		dtoUser.setProfile(dto.getProfile().toString());
-		dtoUser.setPassword(dto.getPass());
+		dtoUser.setPassword(encoder.passwordEncoder().encode(dto.getPass()));
 
 		return repository.save(dtoUser);
 	}
