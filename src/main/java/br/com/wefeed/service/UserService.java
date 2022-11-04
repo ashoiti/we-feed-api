@@ -39,6 +39,10 @@ public class UserService {
 		return token;
 	}
 	
+	public User getUserByEmail(String email) {
+		return repository.findByEmail(email);
+	}
+	
 	public UserDTO getUserDTO(User user) {
 		
 		UserDTO ret = new UserDTO();
@@ -62,5 +66,11 @@ public class UserService {
 		dtoUser.setPassword(encoder.passwordEncoder().encode(dto.getPass()));
 
 		return repository.save(dtoUser);
+	}
+	
+	public void resetPassword(User user, String pass) {
+		user.setPassword(encoder.passwordEncoder().encode(pass));
+		repository.save(user);
+		
 	}
 }

@@ -12,6 +12,7 @@ import br.com.wefeed.service.UserService;
 
 @CrossOrigin
 @RestController
+@RequestMapping(value = "/user")
 public class UserController {
 
     @Autowired
@@ -19,18 +20,31 @@ public class UserController {
 
     @RequestMapping(value = "/validate", method = RequestMethod.GET)
     public ResponseEntity<String> validate(@RequestParam String email) {
-        return ResponseEntity.ok("");
+    	User userByEmail = service.getUserByEmail(email);
+    	if (userByEmail != null) {
+    		return ResponseEntity.ok("");
+    	}
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("");
     }
 
-    @RequestMapping(value = "/user/create", method = RequestMethod.PUT)
+    @RequestMapping(value = "/create", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity create(@RequestBody UserDTO user) {
-        User userCreate = service.saveUser(user);
+        service.saveUser(user);
         return ResponseEntity.ok("");
     }
 
     @RequestMapping(value = "/reset", method = RequestMethod.POST)
-    public UserDTO reset(@RequestBody UserDTO user) {
-        return new UserDTO();
+    public ResponseEntity reset(@RequestBody UserDTO user) {
+    	if (user.getEmail() == null || user.getPass() == null) {
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("");
+    	}
+    	User userByEmail = service.getUserByEmail(user.getEmail());
+    	if (userByEmail == null) {
+    		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("");
+    	}
+    	service.resetPassword(userByEmail, user.getPass());
+    	
+        return ResponseEntity.ok("");
     }
 }
