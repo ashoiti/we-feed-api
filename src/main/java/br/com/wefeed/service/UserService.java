@@ -63,6 +63,7 @@ public class UserService {
 		dtoUser.setEmail(dto.getEmail());
 		dtoUser.setTelephone(dto.getTelephone());
 		dtoUser.setProfile(dto.getProfile().toString());
+		dtoUser.setAddress(dto.getAddress());
 		dtoUser.setPassword(encoder.passwordEncoder().encode(dto.getPass()));
 
 		return repository.save(dtoUser);

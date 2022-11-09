@@ -32,6 +32,7 @@ public class User implements UserDetails{
     private String password;
     private String cpf;
     private String profile;
+    private String address;
 	
     @Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

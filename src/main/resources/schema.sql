@@ -5,7 +5,8 @@ CREATE TABLE tb_user (
   email VARCHAR(200) NOT NULL,
   password VARCHAR(200) NOT NULL,
   cpf VARCHAR(15) NOT NULL,
-  profile VARCHAR(20) NOT NULL
+  profile VARCHAR(20) NOT NULL,
+  address VARCHAR(400)
 );
 
 CREATE TABLE tb_category (
@@ -13,4 +14,15 @@ CREATE TABLE tb_category (
   name VARCHAR(100) NOT NULL,
   description VARCHAR(500)  NOT NULL,
   status VARCHAR(1) NOT NULL
+);
+
+CREATE TABLE tb_product (
+  id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  description VARCHAR(500) NULL,
+  status VARCHAR(1) NOT NULL,
+  id_owner INTEGER NOT NULL,
+  id_category INTEGER NOT NULL,
+  due_date DATE,
+  FOREIGN KEY (id_category) REFERENCES tb_category(id),
+  FOREIGN KEY (id_owner) REFERENCES tb_user(id)
 );

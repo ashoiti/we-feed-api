@@ -13,5 +13,5 @@ public class UserDTO {
 	private String token;
 	private String telephone;
 	private UserProfile profile;
-	
+	private String address;
 }
