@@ -50,6 +50,7 @@ public class UserService {
 		ret.setEmail(user.getEmail());
 		ret.setName(user.getName());
 		ret.setProfile(UserProfile.valueOf(user.getProfile()));
+		ret.setAddress(user.getAddress());
 		
 		return ret;
 	}
