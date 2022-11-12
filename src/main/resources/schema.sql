@@ -19,6 +19,8 @@ CREATE TABLE tb_category (
 CREATE TABLE tb_product (
   id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
   description VARCHAR(500) NULL,
+  name VARCHAR(100) NULL,
+  quantity INT,
   status VARCHAR(1) NOT NULL,
   id_owner INTEGER NOT NULL,
   id_category INTEGER NOT NULL,
