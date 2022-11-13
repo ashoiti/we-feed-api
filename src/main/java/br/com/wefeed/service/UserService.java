@@ -51,6 +51,7 @@ public class UserService {
 		ret.setName(user.getName());
 		ret.setProfile(UserProfile.valueOf(user.getProfile()));
 		ret.setAddress(user.getAddress());
+		ret.setId(user.getId());
 		
 		return ret;
 	}
