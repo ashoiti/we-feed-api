@@ -30,7 +30,7 @@ public class User implements UserDetails{
     private String telephone;
     private String email;
     private String password;
-    private String cpf;
+
     private String profile;
     private String address;
 	
@@ -42,7 +42,7 @@ public class User implements UserDetails{
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return cpf;
+		return email;
 	}
 	@Override
 	public boolean isAccountNonExpired() {

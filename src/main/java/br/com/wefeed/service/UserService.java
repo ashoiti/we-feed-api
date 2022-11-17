@@ -46,7 +46,7 @@ public class UserService {
 	public UserDTO getUserDTO(User user) {
 		
 		UserDTO ret = new UserDTO();
-		ret.setCpf(user.getCpf());
+//		ret.setCpf(user.getCpf());
 		ret.setEmail(user.getEmail());
 		ret.setName(user.getName());
 		ret.setProfile(UserProfile.valueOf(user.getProfile()));
@@ -60,7 +60,7 @@ public class UserService {
 
 		User dtoUser = new User();
 
-		dtoUser.setCpf(dto.getCpf());
+//		dtoUser.setCpf(dto.getCpf());
 		dtoUser.setName(dto.getName());
 		dtoUser.setEmail(dto.getEmail());
 		dtoUser.setTelephone(dto.getTelephone());

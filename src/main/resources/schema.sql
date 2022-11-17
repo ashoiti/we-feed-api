@@ -22,6 +22,7 @@ CREATE TABLE tb_product (
   name VARCHAR(100) NULL,
   quantity INT,
   status VARCHAR(1) NOT NULL,
+  amount VARCHAR(100), 
   id_owner INTEGER NOT NULL,
   id_category INTEGER NOT NULL,
   due_date DATE,
