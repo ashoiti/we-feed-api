@@ -55,8 +55,12 @@ public class ProductController {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity delete(@PathVariable String id) {
-        service.removeProduct(Long.parseLong(id));
-        return ResponseEntity.ok("");
+        boolean removeProduct = service.removeProduct(Long.parseLong(id));
+        if (removeProduct) {
+        	return ResponseEntity.ok("");
+        } else {
+        	return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product not found");
+        }
     }
 
 }

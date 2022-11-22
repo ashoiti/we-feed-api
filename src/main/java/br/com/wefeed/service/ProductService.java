@@ -45,8 +45,12 @@ public class ProductService {
 		return repository.findByCategory(category);
 	}
 	
-	public void removeProduct(Long id) {
-		repository.deleteById(id);
+	public boolean removeProduct(Long id) {
+		if (repository.existsById(id)) {
+			repository.deleteById(id);
+			return true;
+		}
+		return false;
 	}
 
 }
