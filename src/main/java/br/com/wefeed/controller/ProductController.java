@@ -46,6 +46,9 @@ public class ProductController {
     
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity update(@RequestBody Product product) {
+    	if (product.getId() == null) {
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID required");
+    	}
         service.save(product);
         return ResponseEntity.ok("");
     }
