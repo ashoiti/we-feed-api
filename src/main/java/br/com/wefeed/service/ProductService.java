@@ -24,6 +24,11 @@ public class ProductService {
 		repository.save(product);
 	}
 	
+	public void update(Product product) {
+		
+		repository.save(product);
+	}
+	
 	public List<Product> listByOwner(Integer owner) {
 		
 		User user = new User();
@@ -38,6 +43,10 @@ public class ProductService {
 		category.setId((long)idCategory);
 		
 		return repository.findByCategory(category);
+	}
+	
+	public void removeProduct(Long id) {
+		repository.deleteById(id);
 	}
 
 }
