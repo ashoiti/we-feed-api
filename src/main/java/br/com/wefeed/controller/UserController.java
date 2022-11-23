@@ -5,8 +5,6 @@ import br.com.wefeed.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.*;
 import br.com.wefeed.service.UserService;
 
@@ -46,5 +44,15 @@ public class UserController {
     	service.resetPassword(userByEmail, user.getPass());
     	
         return ResponseEntity.ok("");
+    }
+    
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity delete(@PathVariable String id) {
+        boolean remove = service.removeUser(Long.parseLong(id));
+        if (remove) {
+        	return ResponseEntity.ok("");
+        } else {
+        	return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User not found");
+        }
     }
 }

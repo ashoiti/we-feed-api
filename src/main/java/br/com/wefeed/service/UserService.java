@@ -52,6 +52,7 @@ public class UserService {
 		ret.setProfile(UserProfile.valueOf(user.getProfile()));
 		ret.setAddress(user.getAddress());
 		ret.setId(user.getId());
+		ret.setTelephone(user.getTelephone());
 		
 		return ret;
 	}
@@ -75,5 +76,13 @@ public class UserService {
 		user.setPassword(encoder.passwordEncoder().encode(pass));
 		repository.save(user);
 		
+	}
+	
+	public boolean removeUser(Long id) {
+		if (repository.existsById(id)) {
+			repository.deleteById(id);
+			return true;
+		}
+		return false;
 	}
 }
